@@ -13,8 +13,10 @@ jobs:
     - name: linkchecker
       uses: cam-barts/linkchecker-action@master
     - run: ls -alR
+      if: failure()
     - name: Upload exclusion list as an artifact
       uses: actions/upload-artifact@v1
+      if: always()
       with:
         name: exclude_links.json
         path: exclude_links.json
